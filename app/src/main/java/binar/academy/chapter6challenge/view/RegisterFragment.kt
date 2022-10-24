@@ -1,60 +1,87 @@
 package binar.academy.chapter6challenge.view
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import binar.academy.chapter6challenge.R
+import binar.academy.chapter6challenge.databinding.FragmentHomeBinding
+import binar.academy.chapter6challenge.databinding.FragmentRegisterBinding
+import binar.academy.chapter6challenge.viewmodel.UserViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class RegisterFragment : Fragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [UserRegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class UserRegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
+    lateinit var viewModel: UserViewModel
+    lateinit var mContext: Context
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        setupViewModel()
+        setupView()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UserRegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UserRegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(requireActivity())[UserViewModel::class.java]
+    }
+
+    private fun setupView() {
+        binding.btnRegister.setOnClickListener {
+            registerUser()
+        }
+    }
+
+    private fun registerUser() {
+        val username = binding.registerUsername.text.toString()
+        val email = binding.registerEmail.text.toString()
+        val password = binding.registerPassword.text.toString()
+        val passwordConfirm = binding.registerConfirm.text.toString()
+
+        when {
+            username == "" -> {
+                binding.registerUsername.error = "Harus Diisi"
+            }
+            email == "" -> {
+                binding.registerEmail.error = "Harus Diisi"
+            }
+            password == "" -> {
+                binding.registerPassword.error = "Harus Diisi"
+            }
+            passwordConfirm == "" -> {
+                binding.registerConfirm.error = "Harus Diisi"
+            }
+            password != passwordConfirm -> {
+                Toast.makeText(mContext, "Password tidak sama", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                viewModel.saveData(email, username, password)
+                Toast.makeText(mContext, "Registrasi Berhasil", Toast.LENGTH_SHORT).show()
+                activity?.supportFragmentManager?.beginTransaction()?.apply {
+                    replace(R.id.fragment_base, LoginFragment())
+                    commit()
                 }
             }
+        }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

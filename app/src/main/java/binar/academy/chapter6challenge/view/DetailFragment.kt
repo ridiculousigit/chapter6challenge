@@ -1,60 +1,154 @@
 package binar.academy.chapter6challenge.view
 
+import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import binar.academy.chapter6challenge.R
+import binar.academy.chapter6challenge.database.AgentModel
+import binar.academy.chapter6challenge.databinding.FragmentDetailBinding
+import binar.academy.chapter6challenge.databinding.FragmentProfileBinding
+import binar.academy.chapter6challenge.model.AgentResponse
+import binar.academy.chapter6challenge.viewmodel.HomeViewModel
+import binar.academy.chapter6challenge.viewmodel.UserViewModel
+import com.bumptech.glide.Glide
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class DetailFragment : DialogFragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AgentDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AgentDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var mContext: Context
+    lateinit var viewModel: HomeViewModel
+    lateinit var agent: AgentResponse
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val dialog: Dialog? = dialog
+        if (dialog != null) {
+            val width = ViewGroup.LayoutParams.MATCH_PARENT
+            val height = ViewGroup.LayoutParams.MATCH_PARENT
+            dialog.window?.setLayout(width, height)
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        setupViewModel()
+        setupView()
+        observe()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AgentDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AgentDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+    }
+
+    private fun setupView() {
+        agent = arguments?.getSerializable("AGENT") as AgentResponse
+        viewModel.checkIfFavoriteAgent(agent.name)
+        binding.apply {
+            detailName.text = agent.name
+            detailRole.text = agent.role
+            detailBiography.text = agent.desc
+            setImageToView(detailImage, agent.image)
+            setImageToView(detailIcon, agent.roleIcon)
+            setImageToView(cAbility, agent.skillC)
+            setImageToView(qAbility, agent.skillQ)
+            setImageToView(eAbility, agent.skillE)
+            setImageToView(xAbility, agent.skillX)
+        }
+    }
+
+    private fun observe() {
+        viewModel.isFavoriteAgent.observe(viewLifecycleOwner) {
+            if (it) {
+                setFilledFavoriteIcon(true)
+                binding.btnFavorite.setOnClickListener {
+                    viewModel.deleteFavoriteAgent(agent.name)
+                    setFilledFavoriteIcon(false)
+                }
+            } else {
+                setFilledFavoriteIcon(false)
+                binding.btnFavorite.setOnClickListener {
+                    val agentModel = AgentModel(
+                        agent.id.toInt(),
+                        agent.image,
+                        agent.name,
+                        agent.role,
+                        agent.roleIcon,
+                        agent.skillQ,
+                        agent.skillE,
+                        agent.skillC,
+                        agent.skillX,
+                        agent.desc
+                    )
+                    viewModel.addFavoriteAgent(agentModel)
+                    setFilledFavoriteIcon(true)
                 }
             }
+        }
+        viewModel.favoritAgentAdd.observe(viewLifecycleOwner) {
+            if (it != null) Toast.makeText(
+                mContext,
+                "Berhasil tambah ke favorit",
+                Toast.LENGTH_SHORT
+            ).show()
+            viewModel.checkIfFavoriteAgent(agent.name)
+        }
+        viewModel.deleteFavoriteAgent.observe(viewLifecycleOwner) {
+            if (it != null) Toast.makeText(
+                mContext,
+                "Berhasil hapus dari favorit",
+                Toast.LENGTH_SHORT
+            ).show()
+            viewModel.checkIfFavoriteAgent(agent.name)
+        }
     }
+
+    private fun setFilledFavoriteIcon(isFilled: Boolean) {
+        if (isFilled) {
+            binding.btnFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    mContext,
+                    R.drawable.ic_favorite_filled
+                )
+            )
+        } else {
+            binding.btnFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    mContext,
+                    R.drawable.ic_favorite
+                )
+            )
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setImageToView(view: ImageView, url: String) {
+        Glide.with(mContext)
+            .load(url)
+            .into(view)
+    }
+
 }

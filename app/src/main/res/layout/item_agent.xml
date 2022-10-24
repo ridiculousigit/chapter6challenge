@@ -2,11 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="12dp"
     android:layout_margin="8dp"
+    android:backgroundTint="@color/ni"
     android:theme="@style/Theme.Chapter6challenge"
-    android:backgroundTint="@color/ni">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +15,9 @@
         <!--Agent Image-->
         <ImageView
             android:id="@+id/agentImage"
-            android:layout_width="120dp"
+            android:layout_width="80dp"
             android:layout_height="120dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"
@@ -27,14 +28,13 @@
         <!--Agent Role Icon-->
         <ImageView
             android:id="@+id/agentIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/agentImage"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/agentImage"
             app:srcCompat="@drawable/ic_sentinel" />
 
         <!--Agent Role-->
@@ -43,13 +43,12 @@
             style="@style/subHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="10dp"
             android:text="Sentinel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/agentIcon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/agentIcon" />
 
         <!--Agent Name-->
         <TextView
@@ -57,15 +56,14 @@
             style="@style/textHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
             android:text="Killjoy"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/agentImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/agentImage"
-            app:layout_constraintTop_toBottomOf="@+id/agentIcon"
-            app:layout_constraintVertical_bias="0.242" />
+            app:layout_constraintTop_toBottomOf="@+id/agentRole"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
