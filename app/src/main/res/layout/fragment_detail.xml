@@ -1,14 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AgentDetailFragment">
+    android:background="@drawable/bg_detail"
+    android:theme="@style/Theme.Chapter6challenge">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/detailImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_phoenix"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/headerRole"
+        style="@style/prelogHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="// Role"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailImage"
+        app:layout_constraintVertical_bias="0.0" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/detailRole"
+        style="@style/prologHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Duelist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerRole" />
+
+    <TextView
+        android:id="@+id/headerName"
+        style="@style/prelogHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="// Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toEndOf="@+id/headerRole"
+        app:layout_constraintTop_toBottomOf="@+id/detailImage"
+        app:layout_constraintVertical_bias="0.111" />
+
+    <TextView
+        android:id="@+id/detailName"
+        style="@style/prologHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Phoenix"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerName" />
+
+    <ImageView
+        android:id="@+id/detailIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/ic_duelist"
+        app:layout_constraintStart_toEndOf="@+id/detailRole"
+        app:layout_constraintTop_toBottomOf="@+id/detailImage"
+        app:tint="#000000" />
+
+    <TextView
+        android:id="@+id/detailBiography"
+        style="@style/prologDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/yon"
+        android:text="Hailing from the U.K., Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he's got backup or not, he'll rush into a fight on his own terms."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailIcon" />
+
+    <TextView
+        android:id="@+id/headerAbility"
+        style="@style/prologHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Ability"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailBiography" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/cAbility"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/c_phoenix"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:civ_circle_background_color="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerAbility" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/qAbility"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/q_phoenix"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:civ_circle_background_color="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/cAbility"
+        app:layout_constraintTop_toBottomOf="@+id/headerAbility" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/eAbility"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/e_phoenix"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:civ_circle_background_color="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/xAbility"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/qAbility"
+        app:layout_constraintTop_toBottomOf="@+id/headerAbility" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/xAbility"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/x_phoenix"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2dp"
+        app:civ_circle_background_color="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerAbility" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_favorite"
+        app:backgroundTint="@color/ichi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
