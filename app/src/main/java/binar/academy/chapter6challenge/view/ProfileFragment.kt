@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import binar.academy.chapter6challenge.R
 import binar.academy.chapter6challenge.databinding.FragmentProfileBinding
 import binar.academy.chapter6challenge.viewmodel.UserViewModel
 
@@ -41,7 +43,17 @@ class ProfileFragment : DialogFragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         setupViewModel()
         setupView()
+        observe()
         return binding.root
+    }
+
+    private fun observe() {
+        viewModel.dataUser.observe(viewLifecycleOwner) {
+            val data = it.split("|")
+            binding.profileUsername.setText(data[0])
+            binding.profileName.setText(data[1])
+            binding.password.setText(data[2])
+        }
     }
 
     private fun setupViewModel() {
@@ -49,7 +61,31 @@ class ProfileFragment : DialogFragment() {
     }
 
     private fun setupView() {
+        viewModel.getUserData(viewLifecycleOwner)
+        updateUser()
+    }
 
+    private fun updateUser() {
+        val username = binding.profileUsername.text.toString()
+        val email = binding.profileName.text.toString()
+        val password = binding.password.text.toString()
+
+        when {
+            username == "" -> {
+                binding.profileUsername.error = "Harus Diisi"
+            }
+            email == "" -> {
+                binding.profileName.error = "Harus Diisi"
+            }
+            password == "" -> {
+                binding.password.error = "Harus Diisi"
+            }
+            else -> {
+                viewModel.saveData(email, username, password)
+                Toast.makeText(mContext, "Update Berhasil", Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
+        }
     }
 
     override fun onDestroyView() {

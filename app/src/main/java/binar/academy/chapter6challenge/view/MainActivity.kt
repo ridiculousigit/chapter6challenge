@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val firstFragment = HomeFragment()
-        val secondFragment = AgentFavoriteFragment()
+        val secondFragment = FavoriteFragment()
 
         setCurrentFragment(firstFragment)
 

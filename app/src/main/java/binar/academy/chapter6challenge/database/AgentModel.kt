@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
 @Entity
 @Parcelize
@@ -19,4 +20,4 @@ class AgentModel(
     var skillC: String,
     var skillX: String,
     var desc: String,
-) : Parcelable
+) : Serializable, Parcelable

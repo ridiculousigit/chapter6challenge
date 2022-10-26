@@ -38,6 +38,11 @@ class DataStoreUser(@ApplicationContext val context: Context) {
         }
     }
 
+    suspend fun getDataUser() =
+        context.dataStore.data.map {
+            it[DATA_EMAIL] + "|" + it[DATA_USERNAME] + "|" + it[DATA_PASSWORD]
+        }
+
     suspend fun setLogin(paramIsLogin: Boolean) {
         context.dataStore.edit {
             it[DATA_ISLOGIN] = paramIsLogin

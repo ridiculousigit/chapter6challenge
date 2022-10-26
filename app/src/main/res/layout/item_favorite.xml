@@ -1,25 +1,26 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="12dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:backgroundTint="@color/ni"
     android:theme="@style/Theme.Chapter6challenge"
-    android:backgroundTint="@color/ni">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <!--Agent Image-->
         <ImageView
             android:id="@+id/favImage"
-            android:layout_width="120dp"
+            android:layout_width="80dp"
             android:layout_height="120dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_sova" />
@@ -27,12 +28,10 @@
         <!--Agent Role Icon-->
         <ImageView
             android:id="@+id/favIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/favImage"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_initiator" />
@@ -43,11 +42,9 @@
             style="@style/subHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="24dp"
             android:text="Initiator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/favIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,12 +54,10 @@
             style="@style/textHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:text="Sova"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/favImage"
             app:layout_constraintTop_toBottomOf="@+id/favIcon"
             app:layout_constraintVertical_bias="0.242" />
@@ -72,12 +67,9 @@
             android:id="@+id/favDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.74"
-            app:layout_constraintStart_toEndOf="@+id/favAgent"
-            app:layout_constraintTop_toBottomOf="@+id/favRole"
-            app:layout_constraintVertical_bias="0.687"
+            app:layout_constraintTop_toBottomOf="@+id/favAgent"
             app:srcCompat="@drawable/ic_delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

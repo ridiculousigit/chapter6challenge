@@ -83,6 +83,12 @@ class DetailFragment : DialogFragment() {
                 binding.btnFavorite.setOnClickListener {
                     viewModel.deleteFavoriteAgent(agent.name)
                     setFilledFavoriteIcon(false)
+                    Toast.makeText(
+                        mContext,
+                        "Berhasil hapus dari favorit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    viewModel.checkIfFavoriteAgent(agent.name)
                 }
             } else {
                 setFilledFavoriteIcon(false)
@@ -101,24 +107,14 @@ class DetailFragment : DialogFragment() {
                     )
                     viewModel.addFavoriteAgent(agentModel)
                     setFilledFavoriteIcon(true)
+                    Toast.makeText(
+                        mContext,
+                        "Berhasil tambah ke favorit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    viewModel.checkIfFavoriteAgent(agent.name)
                 }
             }
-        }
-        viewModel.favoritAgentAdd.observe(viewLifecycleOwner) {
-            if (it != null) Toast.makeText(
-                mContext,
-                "Berhasil tambah ke favorit",
-                Toast.LENGTH_SHORT
-            ).show()
-            viewModel.checkIfFavoriteAgent(agent.name)
-        }
-        viewModel.deleteFavoriteAgent.observe(viewLifecycleOwner) {
-            if (it != null) Toast.makeText(
-                mContext,
-                "Berhasil hapus dari favorit",
-                Toast.LENGTH_SHORT
-            ).show()
-            viewModel.checkIfFavoriteAgent(agent.name)
         }
     }
 

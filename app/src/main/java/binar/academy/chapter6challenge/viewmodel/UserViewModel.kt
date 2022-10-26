@@ -22,6 +22,7 @@ class UserViewModel @Inject constructor(@ApplicationContext appContext: Context)
     var livedataUsername: MutableLiveData<String> = MutableLiveData()
     var livedataPassword: MutableLiveData<String> = MutableLiveData()
     var livedataIsLogin: MutableLiveData<Boolean> = MutableLiveData()
+    var dataUser: MutableLiveData<String> = MutableLiveData()
     private val userStore: DataStoreUser = DataStoreUser(appContext)
 
     fun callDataUser(lifecycle: LifecycleOwner) {
@@ -35,15 +36,23 @@ class UserViewModel @Inject constructor(@ApplicationContext appContext: Context)
         }
     }
 
-    fun getUsername(lifecycle: LifecycleOwner){
+    fun getUsername(lifecycle: LifecycleOwner) {
         userStore.getUsername.asLiveData().observe(lifecycle) {
             livedataUsername.postValue(it)
         }
     }
 
-    fun getPassword(lifecycle: LifecycleOwner){
+    fun getPassword(lifecycle: LifecycleOwner) {
         userStore.getPassword.asLiveData().observe(lifecycle) {
             livedataPassword.postValue(it)
+        }
+    }
+
+    fun getUserData(lifecycle: LifecycleOwner) {
+        GlobalScope.launch {
+            userStore.getDataUser().asLiveData().observe(lifecycle) {
+                dataUser.postValue(it)
+            }
         }
     }
 
