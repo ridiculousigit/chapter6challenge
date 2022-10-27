@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
-    android:theme="@style/Theme.Chapter6challenge">
+    android:theme="@style/Theme.Chapter6challenge"
+    tools:context=".view.HomeFragment">
 
     <!--Greeting for User-->
     <TextView
@@ -16,7 +17,6 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:text="Welcome Agent,"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +45,7 @@
         android:layout_marginTop="16dp"
         android:text="Ridiculousigit"
         android:textSize="24sp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/ivUser"
         app:layout_constraintTop_toBottomOf="@+id/headerGreet" />
 
@@ -69,7 +70,7 @@
         android:layout_height="5dp"
         android:layout_marginTop="32dp"
         android:background="?android:attr/listDivider"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEdit" />
@@ -82,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Recommended for You"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />

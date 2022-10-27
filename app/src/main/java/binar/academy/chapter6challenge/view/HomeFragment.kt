@@ -1,6 +1,7 @@
 package binar.academy.chapter6challenge.view
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +13,9 @@ import binar.academy.chapter6challenge.adapter.AgentAdapter
 import binar.academy.chapter6challenge.databinding.FragmentHomeBinding
 import binar.academy.chapter6challenge.model.AgentResponse
 import binar.academy.chapter6challenge.viewmodel.HomeViewModel
+import binar.academy.chapter6challenge.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), AgentAdapter.OnAgentClick {
@@ -20,6 +23,7 @@ class HomeFragment : Fragment(), AgentAdapter.OnAgentClick {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: HomeViewModel
+    lateinit var vmUser: UserViewModel
     private lateinit var agentAdapter: AgentAdapter
     private lateinit var mContext: Context
 
@@ -41,6 +45,7 @@ class HomeFragment : Fragment(), AgentAdapter.OnAgentClick {
 
     private fun setupViewModel() {
         viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+        vmUser = ViewModelProvider(requireActivity())[UserViewModel::class.java]
     }
 
     private fun setupView() {
@@ -63,6 +68,12 @@ class HomeFragment : Fragment(), AgentAdapter.OnAgentClick {
                 agentAdapter.addData(it)
             }
         }
+        vmUser.getUsername(viewLifecycleOwner)
+        vmUser.livedataUsername.observe(viewLifecycleOwner) {
+            binding.tvUsername.setText(it)
+        }
+        var image = BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator +"profiles"+ File.separator +"img-profile.png")
+        binding.ivUser.setImageBitmap(image)
     }
 
     override fun onDestroyView() {

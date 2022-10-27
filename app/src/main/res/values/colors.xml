@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ichi">#EA4123</color>
-    <color name="ni">#1C2120</color>
+    <color name="ni">#CC282F3A</color> <!--80 % Opacity-->
     <color name="san">#FFDE59</color>
     <color name="yon">#B2B2B2</color>
     <color name="go">#4D000000</color>

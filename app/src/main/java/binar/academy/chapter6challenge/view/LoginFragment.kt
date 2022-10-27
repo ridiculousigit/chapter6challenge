@@ -18,7 +18,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private lateinit var mContext: Context
-    private var savedUsername: String = ""
+    private var savedEmail: String = ""
     private var savedPassword: String = ""
     lateinit var viewModel: UserViewModel
 
@@ -53,8 +53,8 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             loginAction()
         }
-        viewModel.livedataUsername.observe(viewLifecycleOwner, ({
-            savedUsername = it
+        viewModel.livedataEmail.observe(viewLifecycleOwner, ({
+            savedEmail = it
         }))
         viewModel.livedataPassword.observe(viewLifecycleOwner, ({
             savedPassword = it
@@ -62,22 +62,22 @@ class LoginFragment : Fragment() {
     }
 
     private fun loginAction() {
-        val username = binding.loginEmail.text.toString()
+        val email = binding.loginEmail.text.toString()
         val password = binding.loginPassword.text.toString()
         when {
-            username == "" -> {
-                binding.loginEmail.error = "Harus diisi"
+            email == "" -> {
+                binding.loginEmail.error = "Please fill out this field."
             }
             password == "" -> {
-                binding.loginPassword.error = "Harus diisi"
+                binding.loginPassword.error = "Please fill out this field."
             }
-            username != savedUsername -> {
-                Toast.makeText(mContext, "Username salah", Toast.LENGTH_SHORT).show()
+            email != savedEmail -> {
+                Toast.makeText(mContext, "Incorrect Username !", Toast.LENGTH_SHORT).show()
             }
             password != savedPassword -> {
-                Toast.makeText(mContext, "Password salah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext, "Incorrect Password", Toast.LENGTH_SHORT).show()
             }
-            username == savedUsername && password == savedPassword -> {
+            email == savedEmail && password == savedPassword -> {
                 viewModel.saveLoginStatus(true)
                 startActivity(Intent(mContext, MainActivity::class.java))
                 activity?.finish()

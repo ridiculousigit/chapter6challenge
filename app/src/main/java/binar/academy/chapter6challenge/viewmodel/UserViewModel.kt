@@ -20,6 +20,7 @@ import javax.inject.Inject
 class UserViewModel @Inject constructor(@ApplicationContext appContext: Context) : ViewModel() {
 
     var livedataUsername: MutableLiveData<String> = MutableLiveData()
+    var livedataEmail: MutableLiveData<String> = MutableLiveData()
     var livedataPassword: MutableLiveData<String> = MutableLiveData()
     var livedataIsLogin: MutableLiveData<Boolean> = MutableLiveData()
     var dataUser: MutableLiveData<String> = MutableLiveData()
@@ -27,10 +28,11 @@ class UserViewModel @Inject constructor(@ApplicationContext appContext: Context)
 
     fun callDataUser(lifecycle: LifecycleOwner) {
         getUsername(lifecycle)
+        getEmail(lifecycle)
         getPassword(lifecycle)
     }
 
-    fun saveData(email: String, username: String, password: String) {
+    fun saveData(username: String, email: String, password: String) {
         GlobalScope.launch {
             userStore.saveData(username, email, password)
         }
@@ -42,6 +44,12 @@ class UserViewModel @Inject constructor(@ApplicationContext appContext: Context)
         }
     }
 
+    fun getEmail(lifecycle: LifecycleOwner) {
+        userStore.getEmail.asLiveData().observe(lifecycle) {
+            livedataEmail.postValue(it)
+        }
+    }
+
     fun getPassword(lifecycle: LifecycleOwner) {
         userStore.getPassword.asLiveData().observe(lifecycle) {
             livedataPassword.postValue(it)
@@ -49,10 +57,8 @@ class UserViewModel @Inject constructor(@ApplicationContext appContext: Context)
     }
 
     fun getUserData(lifecycle: LifecycleOwner) {
-        GlobalScope.launch {
-            userStore.getDataUser().asLiveData().observe(lifecycle) {
-                dataUser.postValue(it)
-            }
+        userStore.getDataUser.asLiveData().observe(lifecycle) {
+            dataUser.postValue(it)
         }
     }
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
     android:theme="@style/Theme.Chapter6challenge"
-    tools:context=".view.UserLoginFragment">
+    tools:context=".view.LoginFragment">
 
     <TextView
         android:id="@+id/loginHeader"
@@ -68,6 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:inputType="textPassword"
             android:hint="Password"
             android:textAllCaps="false" />
 

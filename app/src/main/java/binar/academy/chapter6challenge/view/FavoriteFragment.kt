@@ -106,16 +106,16 @@ class FavoriteFragment : Fragment(), AgentAdapterFavorite.OnAgentFavoriteClick {
 
     override fun onAgentDeleted(name: String, position: Int) {
         val builder = AlertDialog.Builder(mContext)
-        builder.setTitle("Hapus Dari Favorite")
-        builder.setMessage("Anda yakin ingin menghapus?")
-        builder.setPositiveButton("Iya") { dialog, which ->
+        builder.setTitle("Remove from favorites")
+        builder.setMessage("Are you sure you want to remove this data ?")
+        builder.setPositiveButton("Yes") { dialog, which ->
             viewModel.deleteFavoriteAgent(name)
             agentAdapter.delete(position)
             viewModel.getAllFavoriteAgent()
-            Toast.makeText(mContext, "Berhasil hapus dari favorit", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, "Successfully removed from favorites !", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
-        builder.setNegativeButton("Tidak") { dialog, which ->
+        builder.setNegativeButton("No") { dialog, which ->
             dialog.dismiss()
         }
         builder.show()

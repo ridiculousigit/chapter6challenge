@@ -12,7 +12,9 @@ import binar.academy.chapter6challenge.R
 import binar.academy.chapter6challenge.databinding.FragmentHomeBinding
 import binar.academy.chapter6challenge.databinding.FragmentRegisterBinding
 import binar.academy.chapter6challenge.viewmodel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
@@ -41,6 +43,12 @@ class RegisterFragment : Fragment() {
     }
 
     private fun setupView() {
+        binding.loginHere.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()?.apply {
+                replace(R.id.fragment_base, LoginFragment())
+                commit()
+            }
+        }
         binding.btnRegister.setOnClickListener {
             registerUser()
         }
@@ -54,22 +62,22 @@ class RegisterFragment : Fragment() {
 
         when {
             username == "" -> {
-                binding.registerUsername.error = "Harus Diisi"
+                binding.registerUsername.error = "Please fill out this field."
             }
             email == "" -> {
-                binding.registerEmail.error = "Harus Diisi"
+                binding.registerEmail.error = "Please fill out this field."
             }
             password == "" -> {
-                binding.registerPassword.error = "Harus Diisi"
+                binding.registerPassword.error = "Please fill out this field."
             }
             passwordConfirm == "" -> {
-                binding.registerConfirm.error = "Harus Diisi"
+                binding.registerConfirm.error = "Please fill out this field."
             }
             password != passwordConfirm -> {
                 Toast.makeText(mContext, "Password tidak sama", Toast.LENGTH_SHORT).show()
             }
             else -> {
-                viewModel.saveData(email, username, password)
+                viewModel.saveData(username, email, password)
                 Toast.makeText(mContext, "Registrasi Berhasil", Toast.LENGTH_SHORT).show()
                 activity?.supportFragmentManager?.beginTransaction()?.apply {
                     replace(R.id.fragment_base, LoginFragment())

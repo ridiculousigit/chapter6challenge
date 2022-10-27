@@ -3,7 +3,6 @@ package binar.academy.chapter6challenge.view
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import binar.academy.chapter6challenge.R
 import binar.academy.chapter6challenge.database.AgentModel
 import binar.academy.chapter6challenge.databinding.FragmentDetailBinding
-import binar.academy.chapter6challenge.databinding.FragmentProfileBinding
 import binar.academy.chapter6challenge.model.AgentResponse
 import binar.academy.chapter6challenge.viewmodel.HomeViewModel
-import binar.academy.chapter6challenge.viewmodel.UserViewModel
 import com.bumptech.glide.Glide
 
 class DetailFragment : DialogFragment() {
@@ -26,7 +23,7 @@ class DetailFragment : DialogFragment() {
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var mContext: Context
-    lateinit var viewModel: HomeViewModel
+    private lateinit var vmHome: HomeViewModel
     lateinit var agent: AgentResponse
 
     override fun onAttach(context: Context) {
@@ -57,12 +54,12 @@ class DetailFragment : DialogFragment() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+        vmHome = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
     }
 
     private fun setupView() {
         agent = arguments?.getSerializable("AGENT") as AgentResponse
-        viewModel.checkIfFavoriteAgent(agent.name)
+        vmHome.checkIfFavoriteAgent(agent.name)
         binding.apply {
             detailName.text = agent.name
             detailRole.text = agent.role
@@ -77,18 +74,18 @@ class DetailFragment : DialogFragment() {
     }
 
     private fun observe() {
-        viewModel.isFavoriteAgent.observe(viewLifecycleOwner) {
+        vmHome.isFavoriteAgent.observe(viewLifecycleOwner) {
             if (it) {
                 setFilledFavoriteIcon(true)
                 binding.btnFavorite.setOnClickListener {
-                    viewModel.deleteFavoriteAgent(agent.name)
+                    vmHome.deleteFavoriteAgent(agent.name)
                     setFilledFavoriteIcon(false)
                     Toast.makeText(
                         mContext,
-                        "Berhasil hapus dari favorit",
+                        "Successfully added to favorites !",
                         Toast.LENGTH_SHORT
                     ).show()
-                    viewModel.checkIfFavoriteAgent(agent.name)
+                    vmHome.checkIfFavoriteAgent(agent.name)
                 }
             } else {
                 setFilledFavoriteIcon(false)
@@ -105,14 +102,14 @@ class DetailFragment : DialogFragment() {
                         agent.skillX,
                         agent.desc
                     )
-                    viewModel.addFavoriteAgent(agentModel)
+                    vmHome.addFavoriteAgent(agentModel)
                     setFilledFavoriteIcon(true)
                     Toast.makeText(
                         mContext,
-                        "Berhasil tambah ke favorit",
+                        "Successfully added to favorites !",
                         Toast.LENGTH_SHORT
                     ).show()
-                    viewModel.checkIfFavoriteAgent(agent.name)
+                    vmHome.checkIfFavoriteAgent(agent.name)
                 }
             }
         }
@@ -146,5 +143,4 @@ class DetailFragment : DialogFragment() {
             .load(url)
             .into(view)
     }
-
 }

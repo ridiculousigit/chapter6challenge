@@ -18,12 +18,20 @@ class DataStoreUser(@ApplicationContext val context: Context) {
         it[DATA_USERNAME] ?: ""
     }
 
+    val getEmail: Flow<String> = context.dataStore.data.map {
+        it[DATA_EMAIL] ?: ""
+    }
+
     val getPassword: Flow<String> = context.dataStore.data.map {
         it[DATA_PASSWORD] ?: ""
     }
 
     val getIsLogin: Flow<Boolean> = context.dataStore.data.map {
         it[DATA_ISLOGIN] ?: false
+    }
+
+    val getDataUser: Flow<String> = context.dataStore.data.map {
+        it[DATA_USERNAME] + "|" + it[DATA_EMAIL] + "|" + it[DATA_PASSWORD]
     }
 
     suspend fun saveData(paramUsername: String, paramEmail: String, paramPass: String) {
@@ -41,7 +49,7 @@ class DataStoreUser(@ApplicationContext val context: Context) {
     suspend fun getDataUser() =
         context.dataStore.data.map {
             it[DATA_EMAIL] + "|" + it[DATA_USERNAME] + "|" + it[DATA_PASSWORD]
-        }
+    }
 
     suspend fun setLogin(paramIsLogin: Boolean) {
         context.dataStore.edit {

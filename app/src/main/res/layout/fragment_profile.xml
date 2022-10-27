@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ni"
+    android:background="@drawable/bg_home"
     android:theme="@style/Theme.Chapter6challenge"
-    tools:context=".view.UserProfileFragment">
+    tools:context=".view.ProfileFragment">
 
     <FrameLayout
         android:id="@+id/imageUser"
@@ -92,7 +92,7 @@
         app:startIconDrawable="@drawable/ic_user">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/profileName"
+            android:id="@+id/profile_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -117,7 +117,7 @@
         app:startIconDrawable="@drawable/ic_password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/profile_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"

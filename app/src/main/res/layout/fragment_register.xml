@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    tools:context=".view.RegisterFragment"
+    android:background="@drawable/bg_register"
+    android:theme="@style/Theme.Chapter6challenge">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_register"
-        android:theme="@style/Theme.Chapter6challenge"
-        tools:context=".view.UserRegisterFragment">
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
 
         <TextView
             android:id="@+id/registerHeader"
@@ -20,10 +21,9 @@
             android:text="Register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.398" />
+            app:layout_constraintVertical_bias="0.407" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/kolomUsername"
@@ -97,7 +97,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:hint="Input Password" />
+                android:hint="Input Password"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,7 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:hint="Confirm Password" />
+                android:hint="Confirm Password"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +133,7 @@
             android:id="@+id/loginAsk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="20dp"
             android:text="Already Have an Account ?"
             android:textColor="@color/white"
@@ -149,6 +151,7 @@
             android:layout_marginEnd="50dp"
             android:text="Login Here"
             android:textColor="@color/san"
+            app:layout_constraintBottom_toBottomOf="@+id/loginAsk"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/loginAsk"
