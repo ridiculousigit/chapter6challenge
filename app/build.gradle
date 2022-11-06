@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -21,6 +23,32 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions("valorant")
+    productFlavors {
+        free {
+            applicationId "binar.academy.chapter6challenge.free"
+            minSdk 21
+            targetSdk 32
+            versionCode 1
+            versionName "1.0"
+            dimension "valorant"
+            manifestPlaceholders = [
+                    appColor: "src/free/res/colors.xml"
+            ]
+        }
+        paid {
+            applicationId "binar.academy.chapter6challenge.paid"
+            minSdk 21
+            targetSdk 32
+            versionCode 1
+            versionName "1.0"
+            dimension "valorant"
+            manifestPlaceholders = [
+                    appColor: "src/paid/res/colors.xml"
+            ]
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -34,7 +62,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding true
         viewBinding true
     }
@@ -46,6 +74,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.3.1'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -89,6 +119,12 @@ dependencies {
     // HILT Depedency Injection's Library
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
 }
 
 kapt {

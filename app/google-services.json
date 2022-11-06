@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "177726203560",
+    "project_id": "gold-chapter",
+    "storage_bucket": "gold-chapter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177726203560:android:74871ae75061cc4606849d",
+        "android_client_info": {
+          "package_name": "binar.academy.chapter6challenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177726203560-dm32si85ri4ldd8als5fk0hqiqo0c55e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "binar.academy.chapter6challenge",
+            "certificate_hash": "82975f48135f0a440bb55f3413aa0349d3934259"
+          }
+        },
+        {
+          "client_id": "177726203560-k56c1futahr2rluifphr1drshskgtgc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD88hErlG4Y3pNcBFIYP1gD_8fRRoKlcjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177726203560-k56c1futahr2rluifphr1drshskgtgc8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177726203560:android:8361800419b942bc06849d",
+        "android_client_info": {
+          "package_name": "binar.academy.chapter6challenge.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177726203560-k56c1futahr2rluifphr1drshskgtgc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD88hErlG4Y3pNcBFIYP1gD_8fRRoKlcjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177726203560-k56c1futahr2rluifphr1drshskgtgc8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177726203560:android:a51084a6e0a16b6706849d",
+        "android_client_info": {
+          "package_name": "binar.academy.chapter6challenge.paid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177726203560-k56c1futahr2rluifphr1drshskgtgc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD88hErlG4Y3pNcBFIYP1gD_8fRRoKlcjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177726203560-k56c1futahr2rluifphr1drshskgtgc8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

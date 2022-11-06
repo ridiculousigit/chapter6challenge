@@ -20,9 +20,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import binar.academy.chapter6challenge.R
 import binar.academy.chapter6challenge.databinding.FragmentProfileBinding
 import binar.academy.chapter6challenge.viewmodel.BlurViewModel
 import binar.academy.chapter6challenge.viewmodel.UserViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -34,10 +39,10 @@ class ProfileFragment : DialogFragment() {
     private val binding get() = _binding!!
     private lateinit var mContext: Context
     lateinit var vmUser: UserViewModel
-    private val vmBlur : BlurViewModel by lazy {
+    private val vmBlur: BlurViewModel by lazy {
         BlurViewModel(requireActivity().application)
     }
-    private var image_uri : Uri? = null
+    private var image_uri: Uri? = null
     private val resultGallery =
         registerForActivityResult(ActivityResultContracts.GetContent()) { result ->
             Log.d("URI_IMG", result.toString())
@@ -47,6 +52,10 @@ class ProfileFragment : DialogFragment() {
         }
 
     private val REQUEST_CODE_PERMISSION = 100
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    private val auth by lazy {
+        FirebaseAuth.getInstance()
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -66,7 +75,7 @@ class ProfileFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         binding.btnivProfile.setOnClickListener {
@@ -76,6 +85,12 @@ class ProfileFragment : DialogFragment() {
         binding.ivProfile.setOnClickListener {
             checkingPermissions()
         }
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(mContext, gso)
 
         setupViewModel()
         setupView()
@@ -95,7 +110,8 @@ class ProfileFragment : DialogFragment() {
             binding.profileEmail.setText(data[1])
             binding.profilePassword.setText(data[2])
         }
-        var image = BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator +"profiles"+ File.separator +"img-profile.png")
+        var image =
+            BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator + "profiles" + File.separator + "img-profile.png")
         binding.ivProfile.setImageBitmap(image)
     }
 
@@ -111,9 +127,18 @@ class ProfileFragment : DialogFragment() {
         }
 
         binding.btnLogout.setOnClickListener {
-            vmUser.saveData("", "", "")
-            vmUser.saveLoginStatus(false)
-            startActivity(Intent(mContext, BaseActivity::class.java))
+            if (GoogleSignIn.getLastSignedInAccount(mContext) != null) {
+                mGoogleSignInClient.signOut().addOnCompleteListener {
+                    vmUser.saveData("", "", "")
+                    vmUser.saveLoginStatus(false)
+                    val intent = Intent(mContext, BaseActivity::class.java)
+                    startActivity(intent)
+                }
+            } else {
+                vmUser.saveData("", "", "")
+                vmUser.saveLoginStatus(false)
+                startActivity(Intent(mContext, BaseActivity::class.java))
+            }
         }
     }
 
@@ -122,7 +147,7 @@ class ProfileFragment : DialogFragment() {
         val email = binding.profileEmail.text.toString()
         val password = binding.profilePassword.text.toString()
 
-        if(image_uri != null){
+        if (image_uri != null) {
             saveImage()
         }
 
@@ -138,18 +163,21 @@ class ProfileFragment : DialogFragment() {
             }
             else -> {
                 vmUser.saveData(username, email, password)
-                Toast.makeText(mContext, "Your profile has been updated successfully !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext,
+                    "Your profile has been updated successfully !",
+                    Toast.LENGTH_SHORT).show()
                 dismiss()
             }
         }
     }
 
-    private fun setbgImage(){
-        var image = BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator +"blur_outputs"+ File.separator +"IMG-BLURRED.png")
+    private fun setbgImage() {
+        var image =
+            BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator + "blur_outputs" + File.separator + "IMG-BLURRED.png")
         binding.bgProfile.setImageBitmap(image)
     }
 
-    private fun saveImage(){
+    private fun saveImage() {
         val resolver = requireActivity().applicationContext.contentResolver
         val picture = BitmapFactory.decodeStream(
             resolver.openInputStream(Uri.parse(image_uri.toString())))
@@ -170,8 +198,9 @@ class ProfileFragment : DialogFragment() {
                     Manifest.permission.READ_EXTERNAL_STORAGE,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ),
-                REQUEST_CODE_PERMISSION,)
-        ){
+                REQUEST_CODE_PERMISSION,
+            )
+        ) {
             accessGallery()
         }
     }
