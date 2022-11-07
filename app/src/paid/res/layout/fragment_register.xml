@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.RegisterFragment"
-    android:background="@drawable/bg_register"
+    android:background="@drawable/bg_register_paid"
     android:theme="@style/Theme.Chapter6challenge">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.407" />
+            app:layout_constraintVertical_bias="0.417" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/kolomUsername"
@@ -133,7 +133,7 @@
             android:id="@+id/loginAsk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="55dp"
             android:layout_marginTop="20dp"
             android:text="Already Have an Account ?"
             android:textColor="@color/white"
