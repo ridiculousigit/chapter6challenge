@@ -1,3 +1,10 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused")
+
 package binar.academy.chapter6challenge.viewmodel
 
 import android.app.Application
@@ -13,6 +20,11 @@ import binar.academy.chapter6challenge.R
 import binar.academy.chapter6challenge.worker.BlurWorker
 import binar.academy.chapter6challenge.worker.KEY_IMAGE_URI
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused")
 class BlurViewModel(application: Application): ViewModel() {
     private val workManager = WorkManager.getInstance(application)
     private var imageUri: Uri? = null
@@ -51,6 +63,8 @@ class BlurViewModel(application: Application): ViewModel() {
     }
 }
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused")
 class BlurViewModelFactory(private val application: Application) :
     ViewModelProvider.AndroidViewModelFactory(application) {
 

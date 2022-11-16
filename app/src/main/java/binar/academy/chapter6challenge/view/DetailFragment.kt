@@ -1,3 +1,8 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.view
 
 import android.app.Dialog
@@ -18,6 +23,10 @@ import binar.academy.chapter6challenge.model.AgentResponse
 import binar.academy.chapter6challenge.viewmodel.HomeViewModel
 import com.bumptech.glide.Glide
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused")
 class DetailFragment : DialogFragment() {
 
     private var _binding: FragmentDetailBinding? = null

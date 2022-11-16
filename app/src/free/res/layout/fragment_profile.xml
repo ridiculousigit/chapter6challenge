@@ -21,12 +21,14 @@
             android:id="@+id/bgProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@color/go" />
+            android:src="@color/go"
+            android:contentDescription="TODO" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivProfile"
@@ -46,7 +48,8 @@
             android:layout_marginTop="55dp"
             android:background="@drawable/ic_edit"
             android:padding="8dp"
-            android:src="@drawable/ic_edit" />
+            android:src="@drawable/ic_edit"
+            android:contentDescription="TODO" />
 
     </FrameLayout>
 

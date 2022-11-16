@@ -1,3 +1,9 @@
+@file:Suppress("RemoveRedundantQualifierName", "RemoveRedundantQualifierName", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.worker
 
 import android.content.Context
@@ -10,6 +16,11 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 
+@Suppress("RemoveRedundantQualifierName", "RemoveRedundantQualifierName", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused")
 class BlurWorker(context: Context, params : WorkerParameters) : Worker(context,params) {
     override fun doWork(): Result {
         val appContext = applicationContext

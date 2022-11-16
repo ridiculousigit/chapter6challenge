@@ -1,3 +1,11 @@
+@file:Suppress("PropertyName", "PropertyName", "PropertyName", "PropertyName", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate")
+
 package binar.academy.chapter6challenge.database
 
 import android.content.Context
@@ -8,6 +16,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused")
 class DataStoreUser(@ApplicationContext val context: Context) {
     val DATA_USERNAME = stringPreferencesKey(USER_USERNAME)
     val DATA_EMAIL = stringPreferencesKey(USER_EMAIL)
@@ -46,6 +55,7 @@ class DataStoreUser(@ApplicationContext val context: Context) {
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
     suspend fun getDataUser() =
         context.dataStore.data.map {
             it[DATA_EMAIL] + "|" + it[DATA_USERNAME] + "|" + it[DATA_PASSWORD]

@@ -24,7 +24,8 @@
             app:layout_constraintHorizontal_bias="0.058"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_killjoy" />
+            app:srcCompat="@drawable/ic_killjoy"
+            android:contentDescription="TODO" />
 
         <!--Agent Role Icon-->
         <ImageView
@@ -38,7 +39,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/agentImage"
             app:layout_constraintTop_toTopOf="@+id/agentImage"
-            app:srcCompat="@drawable/ic_sentinel" />
+            app:srcCompat="@drawable/ic_sentinel"
+            android:contentDescription="TODO" />
 
         <!--Agent Role-->
         <TextView

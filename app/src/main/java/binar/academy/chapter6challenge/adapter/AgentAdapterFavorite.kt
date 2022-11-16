@@ -1,3 +1,7 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused")
+
 package binar.academy.chapter6challenge.adapter
 
 import android.view.LayoutInflater
@@ -7,6 +11,8 @@ import binar.academy.chapter6challenge.database.AgentModel
 import binar.academy.chapter6challenge.databinding.ItemFavoriteBinding
 import com.bumptech.glide.Glide
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused")
 class AgentAdapterFavorite(onAgentClick: OnAgentFavoriteClick) :
     RecyclerView.Adapter<AgentAdapterFavorite.ViewHolder>() {
 

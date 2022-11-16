@@ -16,7 +16,6 @@ import binar.academy.chapter6challenge.R
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.*
 
 fun makeStatusNotification(message: String, context: Context) {
 

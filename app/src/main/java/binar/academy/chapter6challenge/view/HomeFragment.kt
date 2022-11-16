@@ -1,3 +1,9 @@
+@file:Suppress("UsePropertyAccessSyntax", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.view
 
 import android.content.Context
@@ -17,6 +23,11 @@ import binar.academy.chapter6challenge.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 
+@Suppress("UsePropertyAccessSyntax", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused")
 @AndroidEntryPoint
 class HomeFragment : Fragment(), AgentAdapter.OnAgentClick {
 
@@ -72,7 +83,7 @@ class HomeFragment : Fragment(), AgentAdapter.OnAgentClick {
         vmUser.livedataUsername.observe(viewLifecycleOwner) {
             binding.tvUsername.setText(it)
         }
-        var image = BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator +"profiles"+ File.separator +"img-profile.png")
+        val image = BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator +"profiles"+ File.separator +"img-profile.png")
         binding.ivUser.setImageBitmap(image)
     }
 

@@ -1,3 +1,6 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.view
 
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +10,7 @@ import binar.academy.chapter6challenge.R
 import binar.academy.chapter6challenge.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("unused")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

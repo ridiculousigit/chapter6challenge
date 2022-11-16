@@ -1,4 +1,7 @@
 @file:OptIn(DelicateCoroutinesApi::class)
+@file:Suppress("MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "unused", "unused", "unused",
+    "unused", "unused")
 
 package binar.academy.chapter6challenge.viewmodel
 
@@ -18,6 +21,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
+@Suppress("MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "unused", "unused", "unused",
+    "unused")
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(val client: APIService, val db: FavoriteDao) : ViewModel() {
 
@@ -27,6 +33,7 @@ class FavoriteViewModel @Inject constructor(val client: APIService, val db: Favo
     val favoritAgentAdd: MutableLiveData<AgentModel> = MutableLiveData()
     val deleteFavoriteAgent: MutableLiveData<Boolean> = MutableLiveData()
 
+    @Suppress("unused")
     fun callListAgent() {
         client.getAgentList().enqueue(object : Callback<List<AgentResponse>> {
             override fun onResponse(

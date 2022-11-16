@@ -1,6 +1,5 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -23,7 +22,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_sova" />
+            app:srcCompat="@drawable/ic_sova"
+            android:contentDescription="TODO" />
 
         <!--Agent Role Icon-->
         <ImageView
@@ -34,7 +34,8 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toEndOf="@+id/favImage"
             app:layout_constraintTop_toTopOf="@+id/favImage"
-            app:srcCompat="@drawable/ic_initiator" />
+            app:srcCompat="@drawable/ic_initiator"
+            android:contentDescription="TODO" />
 
         <!--Agent Role-->
         <TextView
@@ -69,7 +70,8 @@
             android:layout_margin="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/favAgent"
-            app:srcCompat="@drawable/ic_delete" />
+            app:srcCompat="@drawable/ic_delete"
+            android:contentDescription="TODO" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

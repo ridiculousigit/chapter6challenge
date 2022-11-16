@@ -1,3 +1,6 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.worker
 
 

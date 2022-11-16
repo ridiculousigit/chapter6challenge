@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Ignore everything in the test source set -->
+    <issue id="all">
+        <ignore path="\*/test/\*" />
+    </issue>
+
+    <!-- Disable this given check in this project -->
+    <issue id="ScopedStorage" severity="ignore" />
+    <issue id="ScrollViewSize" severity="ignore" />
+    <issue id="CustomSplashScreen" severity="ignore" />
+    <issue id="GradleDependency" severity="ignore" />
+    <issue id="Overdraw" severity="ignore" />
+    <issue id="UnusedResources" severity="ignore" />
+    <issue id="GifUsage" severity="ignore" />
+    <issue id="IconLocation" severity="ignore" />
+    <issue id="IconExtension" severity="ignore" />
+    <issue id="UnusedResources" severity="ignore" />
+    <issue id="AlwaysShowAction" severity="ignore" />
+    <issue id="KeyboardInaccessibleWidget" severity="ignore" />
+    <issue id="HardcodedText" severity="ignore" />
+    <issue id="ContentDescription" severity="ignore" />
+</lint>

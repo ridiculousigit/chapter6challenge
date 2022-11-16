@@ -1,3 +1,11 @@
+@file:Suppress("PrivatePropertyName", "PrivatePropertyName", "PrivatePropertyName", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate")
+
 package binar.academy.chapter6challenge.view
 
 import android.Manifest
@@ -33,6 +41,12 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate",
+    "MemberVisibilityCanBePrivate")
 class ProfileFragment : DialogFragment() {
 
     private var _binding: FragmentProfileBinding? = null
@@ -110,7 +124,7 @@ class ProfileFragment : DialogFragment() {
             binding.profileEmail.setText(data[1])
             binding.profilePassword.setText(data[2])
         }
-        var image =
+        val image =
             BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator + "profiles" + File.separator + "img-profile.png")
         binding.ivProfile.setImageBitmap(image)
     }
@@ -172,7 +186,7 @@ class ProfileFragment : DialogFragment() {
     }
 
     private fun setbgImage() {
-        var image =
+        val image =
             BitmapFactory.decodeFile(requireActivity().applicationContext.filesDir.path + File.separator + "blur_outputs" + File.separator + "IMG-BLURRED.png")
         binding.bgProfile.setImageBitmap(image)
     }
@@ -241,7 +255,11 @@ class ProfileFragment : DialogFragment() {
             .show()
     }
 
-    private fun saveImageProfile(applicationContext: Context, bitmap: Bitmap): Uri {
+    @Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+        "unused", "unused", "unused", "unused")
+    private fun saveImageProfile(@Suppress("unused", "unused",
+        "unused", "unused", "unused", "unused", "unused", "unused",
+        "unused", "unused", "unused", "unused") applicationContext: Context, bitmap: Bitmap): Uri {
         val name = "img-profile.png"
         val outputDir = File(applicationContext.filesDir, "profiles")
         if (!outputDir.exists()) {

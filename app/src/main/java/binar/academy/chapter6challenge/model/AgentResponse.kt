@@ -1,8 +1,12 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+@Suppress("unused")
 data class AgentResponse(
     @SerializedName("id") val id: String,
     @SerializedName("image") val image: String,

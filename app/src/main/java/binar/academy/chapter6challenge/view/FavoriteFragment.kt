@@ -1,3 +1,6 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.view
 
 import android.app.AlertDialog
@@ -20,6 +23,8 @@ import binar.academy.chapter6challenge.model.AgentResponse
 import binar.academy.chapter6challenge.viewmodel.FavoriteViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused")
 @AndroidEntryPoint
 class FavoriteFragment : Fragment(), AgentAdapterFavorite.OnAgentFavoriteClick {
 

@@ -1,4 +1,8 @@
 @file:OptIn(DelicateCoroutinesApi::class)
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate")
 
 package binar.academy.chapter6challenge.viewmodel
 
@@ -12,10 +16,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+    "MemberVisibilityCanBePrivate", "MemberVisibilityCanBePrivate")
 @HiltViewModel
 class UserViewModel @Inject constructor(@ApplicationContext appContext: Context) : ViewModel() {
 
@@ -32,7 +39,8 @@ class UserViewModel @Inject constructor(@ApplicationContext appContext: Context)
         getPassword(lifecycle)
     }
 
-    fun saveData(username: String, email: String, password: String) {
+    @Suppress("unused", "unused")
+    fun saveData(@Suppress("unused") username: String, email: String, password: String) {
         GlobalScope.launch {
             userStore.saveData(username, email, password)
         }

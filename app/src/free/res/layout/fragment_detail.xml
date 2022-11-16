@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnFavorite"
@@ -31,7 +32,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/detailImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="TODO" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -94,7 +96,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/headerRole"
                 app:layout_constraintStart_toEndOf="@+id/headerRole"
                 app:layout_constraintTop_toTopOf="@+id/headerRole"
-                app:tint="#000000" />
+                app:tint="#000000"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/detailBiography"

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused")
+
 package binar.academy.chapter6challenge.adapter
 
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import binar.academy.chapter6challenge.databinding.ItemAgentBinding
 import binar.academy.chapter6challenge.model.AgentResponse
 import com.bumptech.glide.Glide
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused")
 class AgentAdapter(onAgentClick: OnAgentClick) : RecyclerView.Adapter<AgentAdapter.ViewHolder>() {
 
     private var listAgent = arrayListOf<AgentResponse>()

@@ -6,6 +6,7 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
+        //noinspection AndroidGradlePluginVersion
         classpath 'com.android.tools.build:gradle:3.4.0'
         def nav_version = "2.5.1"
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
